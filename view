@@ -1,0 +1,63 @@
+
+  showDialogIfFirstLoaded(BuildContext context) async {
+    var prefs = await SharedPreferences.getInstance();
+    var isFirstLoaded = prefs.getBool('dialogIntro');
+    if (isFirstLoaded == null) {
+      await showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          // return object of type Dialog
+          /// tiện ích WillPopScope ngăn hộp thoại đóng khi ấn nút quay lại
+          return WillPopScope(
+            onWillPop: () => Future.value(false),
+            child: Padding(
+              padding: EdgeInsets.only(top: 30, bottom: 30),
+              child: UnicornAlertDialog(
+                gradient: LinearGradient(
+                    colors: [
+                      Colors.pink[100],
+                      Colors.transparent
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter
+                ),
+                title: Text(
+                  'CĂN CỨ THÀNH ĐOÀN THÀNH PHỐ HỒ CHÍ MINH THỜI KỲ KHÁNG CHIẾN CHỐNG MỸ',
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      height: 1.5,
+                      shadows: [
+                        BoxShadow(
+                            color: Colors.white,
+                            blurRadius: 1,
+                            offset: Offset(1, 1))
+                      ],
+                      fontFamily: 'UTMImpact',
+                      foreground: Paint()..shader = linearGradient1),
+                  textAlign: TextAlign.center,
+                ),
+                content: SingleChildScrollView(
+                    child: Text(
+                  '     Căn cứ địa là sản phẩm đồng thời là yếu tố không thể thiếu của cuộc kháng chiến chống thực dân Pháp và đế quốc Mỹ xâm lược. Chín năm kháng chiến chống Pháp ta có chiến khu đến thời kháng Mỹ lại xuất hiện một hình thái mà cuộc kháng chiến trước chưa hề có, đó là một loại căn cứ địa được coi là hậu phương của phong trào đấu tranh đô thị, có thể ở nơi nào đó trong vùng giải phóng, nhưng có mối quan hệ mật thiết với phong trào cách mạng đô thị như mạch máu tuần hoàn.Căn cứ đầu tiên của Đoàn Thanh niên khu Sài Gòn - Gia Định được hình thành khoảng tháng 8 năm 1960, ngay sau cuộc Đồng Khởi mở ra vùng giải phóng theo sự chỉ đạo của Khu ủy, căn cứ đầu tiên ấy được thành lập do quyết định của đồng chí Bí thư và Phó Bí thư Đoàn lúc bấy giờ - Anh Trần Quang Cơ (Tám Lượng) và anh Hồ Hảo Hớn (Ba Lực), người đã đặt bước chân đầu tiên đến khu rừng chồi ấp Xóm Bưng - xã Nhuận Đức - Củ Chi, chỉ cách Sài Gòn hơn 30km. Tuy chỉ tồn tại 6 tháng nhưng có ý nghĩa vô cùng quan trọng: không chỉ giúp cho phong trào và tổ chức cách mạng trong nội thành thoát khỏi nguy cơ bị địch triệt phá, mà còn làm cho phong trào khôi phục và phát triển mạnh lên, đồng thời mở ra khả năng phát triển vùng hậu phương có tính chiến lược cho phong trào cách mạng đô thị.Từ đây hàng loạt các căn cứ khác được mở ra, suốt quá trình cuộc kháng chiến vừa gắn với chỉ đạo của trên, vừa bám chặt phong trào trong đô thị với nhiều loại hình và chức năng đa dạng phục vụ đắc lực cho phong trào như: đảm bảo tốt sự chỉ đạo thông suốt kịp thời, điều lắng cán bộ mở lớp huấn luyện, đào tạo, triển khai nghị quyết tích trữ kho tàng phương tiện, vũ khí đánh địch... trong bất cứ tình huống nào. Đó là một hệ thống các căn cứ gồm căn cứ trung tâm chỉ đạo, căn cứ các cánh sinh viên, học sinh, thanh niên công nhân lao động, lực lượng vũ trang, căn cứ chuyên huấn luyện, in ấn, điều lắng, căn cứ ở vùng sâu, căn cứ lõm ở vùng yếu, căn cứ mật ở vùng tạm chiếm và trong đô thị, đáp ứng yêu cầu đa dạng của cách mạng. Gắn liền với căn cứ là một hệ thống bàn đạp giao liên dưới nhiều hình thức được nghi trang cẩn thận, giữ bí mật dù ở trong vùng giải phóng; bảo đảm các yêu cầu về đường dây chỉ đạo, đưa đón “khách” *, chuyển tải thư từ, sách báo, phương tiện vũ khí vào nội thành.Tồn tại và phát triển suốt 15 năm kháng chiến chống Mỹ, chúng ta có trên 40 căn cứ, được rải đều 12 tỉnh thành từ rừng núi, nông thôn, đồng bằng, vùng biên giới và ngay cả trên đất bạn Campuchia. Từ Tây Ninh, Trảng Bàng, Củ Chi, Bình Dương, Đồng Nai, Bà Rịa đến Long An, Đồng Tháp, Tiền Giang, Bến Tre, Cần Thơ, Kiến Phong Cao Lãnh, An Giang Hồng Ngự, Ba Thu, Kratié...Trong hàng loạt các căn cứ trải rộng trên nhiều vùng bao quanh đô thị Sài Gòn - Gia Định như thế, thì căn cứ miền Đông Nam Bộ - đặc biệt là Củ Chi, Bến Cát - trước sau vẫn là căn cứ mang tính chiến lược, cho dù có lúc địch đánh phá, phải chuyển đi trong suốt một thời gian dài. Bởi đây là vùng đặc biệt tiếp cận Sài Gòn, lại là vùng cao có rừng lớn với hệ thống địa đạo hàng trăm cây số, bảo vệ an toàn cho việc tập trung người lẫn phương tiện, làm hậu phương đắc lực cho đô thị. Căn cứ Núi Dinh - Bà Rịa, chỉ cách Sài Gòn hơn 2 giờ đi lại có rừng núi hang động che chở, có nhiều chùa chiền rộng, lối ra vào hợp pháp.',
+                  textAlign: TextAlign.justify,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                )),
+                // actions: <Widget>[
+                //   // usually buttons at the bottom of the dialog
+                //   FlatButton(
+                //     child: Text('Đóng'),
+                //     onPressed: () {
+                //       // Close the dialog
+                //       Navigator.of(context).pop();
+                //       prefs.setBool('dialogIntro', false);
+                //     },
+                //   ),
+                // ],
+              ),
+            ),
+          );
+        },
+      );
+    }
+  }
